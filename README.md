@@ -4,8 +4,6 @@
 
 TrimItGood is a minimalist URL shortening service written in **Kotlin + Spring Boot**. It lets you shrink long, ugly URLs into short, manageable links — with features like analytics, custom slugs, and expiry dates.
 
----
-
 ## Features
 
 - Shorten long URLs to tiny slugs
@@ -14,15 +12,11 @@ TrimItGood is a minimalist URL shortening service written in **Kotlin + Spring B
 - Click tracking and analytics
 - Auto-cleanup of expired links
 
----
-
 ## Tech Stack
 
 - Backend: Kotlin (JVM), Spring Boot
-- Database: PostgreSQL
+- Database: PostgreSQL, H2
 - Dev Tools: Docker, Swagger UI, Testcontainers - Karate (optional)
-
----
 
 ## Getting Started
 
