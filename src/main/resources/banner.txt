@@ -1,0 +1,7 @@
+ _   _ _____ __   __ _   _           _
+| \ | /  __ \\ \ / /| | | |         | |
+|  \| | /  \/ \ V / | |_| | ___  ___| |_
+| . ` | |     /   \ |  _  |/ _ \/ __| __|  | ${spring.application.name}
+| |\  | \__/\/ /^\ \| | | | (_) \__ \ |_   | Profile: ${spring.profiles.active}
+\_| \_/\____/\/   \/\_| |_/\___/|___/\__|  | Spring Boot: v${spring-boot.version}
+

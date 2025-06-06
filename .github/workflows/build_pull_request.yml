@@ -1,0 +1,37 @@
+name: PR Build Check
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build pull request
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Run ktlint check
+        id: ktlint
+        run: ./gradlew ktlintCheck --no-daemon
+
+      - name: Upload KtLint report (on failure)
+        if: failure() && steps.ktlint.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ktlint-report
+          path: build/reports/ktlint/
+
+      - name: Clean and build
+        run: ./gradlew clean build --no-daemon

@@ -1,0 +1,36 @@
+name: Build Push - Main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build main branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Run ktlintCheck and build
+        run: |
+          ./gradlew ktlintCheck --no-daemon
+          ./gradlew clean build --no-daemon
+
+      - name: Upload Ktlint Checkstyle Report (if any errors)
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ktlint-report
+          path: build/reports/ktlint/ktlintCheckstyleReport.xml
