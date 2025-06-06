@@ -74,7 +74,7 @@ class URLShortenerService(
 
         url.accessLimit?.let { limit ->
             val accessCount = urlStatsRepository.countByUrlId(url.id)
-            if (accessCount > limit) {
+            if (accessCount >= limit) {
                 throw RequestException("ShortCode has exceeded its access limit")
             }
         }

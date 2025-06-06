@@ -34,9 +34,11 @@ TrimItGood is a minimalist URL shortening service written in **Kotlin + Spring B
 git clone https://github.com/shirishsaxena/TrimItGood.git
 cd TrimItGood
 
+# Or build it
+./gradlew clean build 
+
 # Run the app
 ./gradlew bootRun
-
 
 Env Variables (dev, qa)
 ```env
@@ -50,4 +52,6 @@ docker build -t url-shorty .
 docker run -d -p 8090:8090 url-shorty
 
 ```
+
+Swagger: http://localhost:8090/swagger-ui/index.html
 ### Project details by https://roadmap.sh/projects/url-shortening-service
